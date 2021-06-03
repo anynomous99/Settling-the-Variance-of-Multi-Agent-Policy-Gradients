@@ -34,10 +34,20 @@ class R_MAPPOPolicy:
         self.ob_n_actions = args.ob_n_actions
         self.use_ob = args.use_ob
 
-        self.actor_optimizer = torch.optim.RMSprop(self.actor.parameters(), lr=self.lr, momentum=0.9)
-        self.critic_optimizer = torch.optim.RMSprop(self.critic.parameters(), lr=self.critic_lr, momentum=0.9)
-        self.actor_scheduler = lr_scheduler.ExponentialLR(self.actor_optimizer, gamma=args.lr_decay)
-        # self.critic_scheduler = lr_scheduler.ExponentialLR(self.critic_optimizer, gamma=0.99)
+        if self.act_space.__class__.__name__ == "Box":
+            self.actor_optimizer = torch.optim.RMSprop(self.actor.parameters(), lr=self.lr, momentum=0.9)
+            self.critic_optimizer = torch.optim.RMSprop(self.critic.parameters(), lr=self.critic_lr, momentum=0.9)
+            self.actor_scheduler = lr_scheduler.ExponentialLR(self.actor_optimizer, gamma=args.lr_decay)
+            # self.critic_scheduler = lr_scheduler.ExponentialLR(self.critic_optimizer, gamma=0.99)
+        else:
+            self.actor_optimizer = torch.optim.Adam(self.actor.parameters(),
+                                                    lr=self.lr, eps=self.opti_eps,
+                                                    weight_decay=self.weight_decay)
+            self.critic_optimizer = torch.optim.Adam(self.critic.parameters(),
+                                                     lr=self.critic_lr,
+                                                     eps=self.opti_eps,
+                                                     weight_decay=self.weight_decay)
+            self.actor_scheduler = lr_scheduler.ExponentialLR(self.actor_optimizer, gamma=args.lr_decay)
 
     def lr_decay(self, episode, episodes):
         """

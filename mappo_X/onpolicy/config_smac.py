@@ -224,6 +224,8 @@ def get_config():
     parser.add_argument("--opti_eps", type=float, default=1e-5,
                         help='RMSprop optimizer epsilon (default: 1e-5)')
     parser.add_argument("--weight_decay", type=float, default=0)
+    parser.add_argument("--ob_n_actions", type=int, default=1000)
+    parser.add_argument("--lr_decay", type=float, default=1)
 
     # ppo parameters
     parser.add_argument("--ppo_epoch", type=int, default=15,
@@ -256,6 +258,8 @@ def get_config():
     parser.add_argument("--use_policy_active_masks",
                         action='store_false', default=True, help="by default True, whether to mask useless data in policy loss.")
     parser.add_argument("--huber_delta", type=float, default=10.0, help=" coefficience of huber loss.")
+    parser.add_argument("--use_ob", action='store_true',
+                        default=False, help='use optimal baseline')
 
     # run parameters
     parser.add_argument("--use_linear_lr_decay", action='store_true',
