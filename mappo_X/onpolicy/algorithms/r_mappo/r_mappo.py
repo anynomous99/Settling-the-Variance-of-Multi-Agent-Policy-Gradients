@@ -194,8 +194,9 @@ class R_MAPPO:
                 train_info['ratio'] += imp_weights.mean()
 
         num_updates = self.ppo_epoch * self.num_mini_batch
-        self.policy.actor_scheduler.step()
-        # self.policy.critic_scheduler.step()
+        if self.policy.actor_scheduler is not None:
+            self.policy.actor_scheduler.step()
+            # self.policy.critic_scheduler.step()
 
         for k in train_info.keys():
             train_info[k] /= num_updates

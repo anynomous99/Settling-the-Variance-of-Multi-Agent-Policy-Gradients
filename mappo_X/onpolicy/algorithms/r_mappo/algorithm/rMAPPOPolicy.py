@@ -33,6 +33,7 @@ class R_MAPPOPolicy:
         self.critic = R_Q_Critic(args, self.share_obs_space, self.act_space, self.device)
         self.ob_n_actions = args.ob_n_actions
         self.use_ob = args.use_ob
+        self.actor_scheduler = None
 
         if self.act_space.__class__.__name__ == "Box":
             self.actor_optimizer = torch.optim.RMSprop(self.actor.parameters(), lr=self.lr, momentum=0.9)
@@ -47,7 +48,6 @@ class R_MAPPOPolicy:
                                                      lr=self.critic_lr,
                                                      eps=self.opti_eps,
                                                      weight_decay=self.weight_decay)
-            self.actor_scheduler = lr_scheduler.ExponentialLR(self.actor_optimizer, gamma=args.lr_decay)
 
     def lr_decay(self, episode, episodes):
         """
