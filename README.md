@@ -1,5 +1,5 @@
 # Settling-the-Variance-of-Multi-Agent-Policy-Gradients
-This repository implements OB technique, which effectively stabilises training and improves the performance of multi-agent PPO and COMA algorithms by a signiﬁcant margin.
+This repository implements the optimal baseline (OB) technique, which effectively stabilises training and improves the performance of multi-agent PPO and COMA algorithms by a signiﬁcant margin.
 * The mappo_ob is an implementation of multi-agent PPO algorithms with Q-critic and OB version, its vanilla version could be found in https://github.com/marlbenchmark/on-policy
 * The coma_ob is derived from https://github.com/oxwhirl/pymarl, where the OB is plugged into its COMA algorithm.
 * The comix is a simple copy of the official version: https://github.com/oxwhirl/comix, where its COMIX and MADDPG are used as baseline algorithms.
