@@ -39,7 +39,7 @@ If you would like to change the configs of experiments, you could modify sh file
 
 ### COMA on SMAC
 
-<img src="results/8m.png" width="500" >
+<img src="results/3m.png" width="500" >
 
 ### Multi-agent PPO on SMAC
 
