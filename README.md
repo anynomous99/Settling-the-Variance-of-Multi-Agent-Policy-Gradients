@@ -34,7 +34,7 @@ When environment is ready, you could run shell scripts provided. For example:
 ./train_mappo_hopper.sh  # run mappo with ob experiments on Multi-agent MuJoCo
 ./train_coma_smac.sh  # run coma with ob experiments on StarCraft II
 ```
-If you would like to change the configs of experiments:
+If you would like to change the configs of experiments, you could modify the sh file or look for config files for more details.
 * For COMA, they're located in coma_ob/src/config.
 * For Multi-agent PPO, they're located in mappo_ob/onpolicy/config_mujoco.py or mappo_ob/onpolicy/config_smac.py
 
