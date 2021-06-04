@@ -47,6 +47,6 @@ If you would like to change the configs of experiments, you could modify sh file
 
 ### Multi-agent PPO on MuJoCo
 
-<img src="results/hopper.png" width="500" >
+<img src="results/halfcheetah.png" width="500" >
 
 
