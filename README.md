@@ -39,11 +39,17 @@ If you would like to change the configs of experiments:
 * For Multi-agent PPO, they're located in mappo_ob/onpolicy/config_mujoco.py or mappo_ob/onpolicy/config_smac.py
 
 ## Some results
+
 ### COMA on SMAC
+
 <img src="results/8m.png" width="500" >
+
 ### Multi-agent PPO on SMAC
+
 <img src="results/6h8z.png" width="500" >
+
 ### Multi-agent PPO on MuJoCo
+
 <img src="results/hopper.png" width="500" >
 
 
