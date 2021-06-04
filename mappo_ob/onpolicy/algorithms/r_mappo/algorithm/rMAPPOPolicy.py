@@ -177,7 +177,7 @@ class R_MAPPOPolicy:
         :return action_log_probs: (torch.Tensor) log probabilities of the input actions.
         :return dist_entropy: (torch.Tensor) action distribution entropy for the given inputs.
         """
-        action_log_probs, dist_entropy = self.actor.evaluate_actions(obs,
+        actions, action_log_probs, dist_entropy = self.actor.evaluate_actions(obs,
                                                                      rnn_states_actor,
                                                                      action,
                                                                      masks,
@@ -188,7 +188,8 @@ class R_MAPPOPolicy:
         else:
             qs, _ = self.critic(cent_obs, rnn_states_critic, masks)
             if self.use_ob:
-                qs = qs.gather(-1, torch.tensor(action, dtype=torch.int64))
+                # qs = qs.gather(-1, torch.tensor(action, dtype=torch.int64))
+                qs = qs.gather(-1, actions)
         return qs, action_log_probs, dist_entropy
 
     def act(self, obs, rnn_states_actor, masks, available_actions=None, deterministic=False):

@@ -164,6 +164,7 @@ class ACTLayer(nn.Module):
         
         else:
             action_logits = self.action_out(x, available_actions)
+            actions = action_logits.mode() if deterministic else action_logits.sample()
             action_log_probs = action_logits.log_probs(action)
 
             if active_masks is not None:
@@ -174,4 +175,4 @@ class ACTLayer(nn.Module):
             else:
                 dist_entropy = action_logits.entropy().mean()
         
-        return action_log_probs, dist_entropy
+        return actions, action_log_probs, dist_entropy
