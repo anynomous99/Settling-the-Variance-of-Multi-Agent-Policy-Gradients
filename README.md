@@ -24,6 +24,10 @@ Run the script
 bash install_sc2.sh
 ```
 Or you could install them manually to other path you like, just follow here: https://github.com/oxwhirl/smac.
+At the end, it's the best to export the environment variable $SC2PATH to your StarCraft root path. For example:
+``` Bash
+export SC2PATH=`pwd`'/StarCraftII'  # the root path of StarCraft on your machine
+```
 
 ## How to run
 When your environment is ready, you could run shell scripts provided. For example:
